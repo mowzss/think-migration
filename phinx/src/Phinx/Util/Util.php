@@ -105,7 +105,12 @@ class Util
     public static function mapClassNameToFileName($className)
     {
         $arr = preg_split('/(?=[A-Z])/', $className);
-        unset($arr[0]); // remove the first element ('')
+        // 如果第一个元素是空字符串（意味着类名以小写字母开头），则删除它
+        if (empty($arr[0])) {
+            unset($arr[0]);
+        }
+        // 重新索引数组
+        $arr = array_values($arr);
         $fileName = static::getCurrentTimestamp() . '_' . strtolower(implode($arr, '_')) . '.php';
         return $fileName;
     }
