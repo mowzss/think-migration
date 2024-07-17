@@ -111,7 +111,7 @@ class Util
         }
         // 重新索引数组
         $arr = array_values($arr);
-        $fileName = static::getCurrentTimestamp() . '_' . strtolower(implode($arr, '_')) . '.php';
+        $fileName = static::getCurrentTimestamp() . '_' . strtolower(implode( '_',$arr)) . '.php';
         return $fileName;
     }
 
